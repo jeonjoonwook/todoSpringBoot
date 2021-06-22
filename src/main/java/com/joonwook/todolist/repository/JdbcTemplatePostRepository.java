@@ -36,7 +36,7 @@ public class JdbcTemplatePostRepository implements PostRepository {
             public PostForm mapRow(ResultSet rs, int rowNum) throws SQLException {
                 PostForm postForm = new PostForm();
                 postForm.setId(rs.getInt("id"));
-                postForm.setContent(rs.getString("name"));
+                postForm.setContent(rs.getString("content"));
                 return postForm;
             }
         };
