@@ -1,7 +1,7 @@
 {
-  "name": "todo-vue",
+  "name": "vue-todo",
   "version": "1.0.0",
-  "description": "vue js todo project",
+  "description": "todo vue js",
   "author": "jeonjoonwook",
   "private": true,
   "scripts": {

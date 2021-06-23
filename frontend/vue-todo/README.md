@@ -1,6 +1,6 @@
-# todo-vue
+# vue-todo
 
-> vue js todo project
+> todo vue js
 
 ## Build Setup
 
