@@ -1,4 +1,4 @@
-package com.joonwook.todolist;
+package com.joonwook.todolist.config;
 
 import com.joonwook.todolist.repository.JdbcTemplatePostRepository;
 import com.joonwook.todolist.repository.PostRepository;
