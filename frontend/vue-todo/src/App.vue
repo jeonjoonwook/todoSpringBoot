@@ -5,13 +5,17 @@
     <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
     <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
   </div>
+
 </template>
 
+
 <script>
+import axios from 'axios'
 import TodoHeader from './components/TodoHeader.vue'
 import TodoInput from './components/TodoInput.vue'
 import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
+
 
 export default {
   data(){
@@ -26,6 +30,10 @@ export default {
           this.todoItems.push(localStorage.key(i));
         }
       }
+      axios.get('http://localhost:5000/test')
+          .then(response=>{
+           console.log(response);
+      })
   },
   methods: {
     addTodo(todoItem){
@@ -39,7 +47,8 @@ export default {
     removeTodo(todoItem, index){
       localStorage.removeItem(todoItem);
       this.todoItems.splice(index, 1);
-    }
+    },
+
   },
   components: {
     'TodoHeader': TodoHeader,

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@CrossOrigin(origins={"*"}, maxAge=6000)
 public class PostController {
 
     private final PostService postService;
@@ -59,6 +60,7 @@ public class PostController {
     }
     */
 
+    //@CrossOrigin("*")
     @GetMapping("/test")
     @ResponseBody
     public List<TestDto> test(){
