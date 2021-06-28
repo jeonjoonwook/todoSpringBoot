@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class JdbcTemplatePostRepository implements PostRepository {
     private final JdbcTemplate jdbcTemplate;
@@ -20,7 +21,6 @@ public class JdbcTemplatePostRepository implements PostRepository {
 
     @Override
     public int save(PostForm postForm) {
-        System.out.println("content!!!!!!"+postForm.getContent());
         String sql = "insert into todo(content) values(?)";
         return jdbcTemplate.update(sql,postForm.getContent());
     }
@@ -28,6 +28,18 @@ public class JdbcTemplatePostRepository implements PostRepository {
     @Override
     public List<PostForm> findAll() {
         return jdbcTemplate.query("select * from todo", todoRowMapper());
+    }
+
+    @Override
+    public Optional<PostForm> findById(int id) {
+        List<PostForm> result = jdbcTemplate.query("select * from todo where id = ?",todoRowMapper(),id);
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<PostForm> findByContent(String content) {
+        List<PostForm> result = jdbcTemplate.query("select * from todo where content = ?",todoRowMapper(),content);
+        return result.stream().findAny();
     }
 
     private RowMapper<PostForm> todoRowMapper(){
